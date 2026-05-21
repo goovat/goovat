@@ -1,9 +1,6 @@
-# MyCrony
+I'm Goovat — a backend-focused developer building scalable platforms with Python and Django.
 
-
-I'm **Great (goovat)** — a backend-focused developer building scalable platforms with Python and Django.
-
-Currently building **MyCrony**, a full-stack social networking and creator economy platform combining social media, monetization, creator tools, real-time communication, and payment infrastructure.
+Currently building MyCrony, a full-stack social networking and creator economy platform combining social media, monetization, creator tools, real-time communication, and payment infrastructure.
 
 MyCrony is a full-stack social networking, creator economy, media sharing, and monetization platform built with Django. The project combines social media functionality, creator tools, content management, live interactions, personalized feeds, analytics, and payment infrastructure into one ecosystem.
 
@@ -11,7 +8,7 @@ The platform supports content creators, communities, media publishing, social in
 
 ---
 
-# Table of Contents
+Table of Contents
 
 - Overview
 - Features
