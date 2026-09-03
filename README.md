@@ -1,48 +1,218 @@
-I'm Goovat — a backend-focused developer building scalable platforms with Python and Django.
+OVIE — BACKEND ENGINEER PORTFOLIO
 
-Currently building MyCrony, a full-stack social networking and creator economy platform combining social media, monetization, creator tools, real-time communication, and payment infrastructure.
+I'm OVIE — a backend-focused developer building scalable, reliable systems with Python, Django, FastAPI, PostgreSQL, Redis, REST APIs, asynchronous processing, financial infrastructure, and automated testing.
 
-MyCrony is a full-stack social networking, creator economy, media sharing, and monetization platform built with Django. The project combines social media functionality, creator tools, content management, live interactions, personalized feeds, analytics, and payment infrastructure into one ecosystem.
+My portfolio focuses on production-oriented backend engineering rather than simple CRUD applications. I build systems around payments, money movement, accounting, asynchronous processing, API reliability, database integrity, idempotency, concurrency, observability, and CI/CD.
 
-The platform supports content creators, communities, media publishing, social interactions, monetization workflows, creator earnings, and real-time engagement systems.
+My current engineering portfolio includes four core backend systems:
+
+- Payment Flow — payment processing and webhook infrastructure
+- Transfer Engine — reliable wallet and money-transfer infrastructure
+- LedgerCore — double-entry financial ledger and accounting engine
+- AsyncAPI Engine — asynchronous API and background job-processing platform
+
+I am also building MyCrony, a full-stack social networking and creator-economy platform combining social media, creator tools, content management, real-time communication, monetization, analytics, and payment infrastructure.
 
 ---
 
-Table of Contents
+Portfolio
 
-- Overview
-- Features
-- Architecture
-- Applications
-- Core Modules
-- Creator Economy
-- Payment Infrastructure
-- Feed System
-- Real-Time Features
+1. Payment Flow
+
+Payment Flow is a production-oriented payment processing platform designed around reliable payment workflows and external payment-provider integrations.
+
+The system demonstrates:
+
+- Payment intent creation
+- Payment confirmation
+- Payment transaction tracking
+- Stripe integration
+- Webhook processing
+- Webhook signature verification
+- Idempotent payment operations
+- Celery background processing
+- Redis
+- PostgreSQL
+- Integration testing
+- Automated CI/CD
+
+The architecture emphasizes reliable interaction with external payment systems while maintaining consistent internal transaction state.
+
+Engineering Focus
+
+- Payment lifecycle management
+- Idempotency
+- Webhook reliability
+- Asynchronous processing
+- Transaction state management
+- Integration testing
+- CI/CD
+- Production-oriented configuration
+
+---
+
+2. Transfer Engine
+
+Transfer Engine is a financial transfer service focused on reliable movement of value between wallets.
+
+The system demonstrates backend engineering principles required for financial transactions, including transactional balance management and database integrity.
+
+Core Components
+
+- Users
+- Wallets
+- Wallet balances
+- Transfer workflows
+- Balance services
+- Transactional operations
+- Validation
+- Exception handling
+- PostgreSQL
+- Django
+- Automated tests
+
+Engineering Focus
+
+- Atomic financial operations
+- Balance integrity
+- Transaction safety
+- Database transactions
+- Concurrency-aware design
+- Service-layer architecture
+- Automated testing
+
+The project is designed to demonstrate that a financial backend must protect the correctness of balances rather than simply expose transfer endpoints.
+
+---
+
+3. LedgerCore
+
+LedgerCore is a production-oriented double-entry accounting ledger engine.
+
+It is designed to demonstrate financial-domain backend architecture beyond basic payment and transfer processing.
+
+Core Components
+
+- Accounts
+- Ledgers
+- Journal entries
+- Journal lines
+- Debit and credit operations
+- Double-entry validation
+- Account balances
+- Transaction references
+- Reconciliation
+- Immutable financial records
+- Audit events
+- Database constraints
+- Atomic operations
+
+Financial Integrity
+
+LedgerCore is built around fundamental accounting invariants.
+
+Every journal entry must maintain balanced debits and credits.
+
+Financial records are designed to be immutable rather than casually overwritten.
+
+Database constraints and transactional operations are used to protect financial correctness at the persistence layer.
+
+Engineering Focus
+
+- Double-entry accounting
+- Financial invariants
+- PostgreSQL
+- Django
+- Database constraints
+- Atomic transactions
+- Auditability
+- Reconciliation
+- Automated testing
+- CI/CD
+- Production reliability
+
+---
+
+4. AsyncAPI Engine
+
+AsyncAPI Engine is a FastAPI-based asynchronous job-processing platform designed around reliable background work and scalable API architecture.
+
+Architecture
+
+Client
+  │
+  ▼
+FastAPI API
+  │
+  ▼
+Job Service
+  │
+  ├── PostgreSQL
+  │
+  ├── Redis
+  │
+  └── Worker Processing
+          │
+          ▼
+      Background Jobs
+
+Core Capabilities
+
+- FastAPI API layer
+- Asynchronous job processing
+- Job service architecture
+- SQLAlchemy
+- Alembic migrations
+- PostgreSQL
+- Redis
+- Worker processing
+- Authentication
+- Idempotency
+- Retry handling
+- Failure management
+- Observability
+- Docker
+- pytest
+- CI/CD
+
+Engineering Focus
+
+- Async Python
+- API architecture
+- Background processing
+- Reliable job execution
+- Retry strategies
+- Idempotency
+- Redis-based infrastructure
+- Database persistence
+- Observability
+- Containerization
+- Automated testing
+
+---
+
+MyCrony
+
+MyCrony is a full-stack social networking, creator-economy, media-sharing, and monetization platform built with Django.
+
+The project combines social media functionality, creator tools, content management, live interactions, personalized feeds, analytics, real-time communication, and payment infrastructure into one ecosystem.
+
+The platform supports:
+
+- Content creators
+- Communities
+- Media publishing
+- Social interactions
+- Monetization workflows
+- Creator earnings
+- Subscriptions
+- Real-time engagement
 - Analytics
-- Moderation & Administration
-- Media Support
-- Project Structure
-- Technology Stack
-- Installation
-- Environment Setup
-- Database Setup
-- Running Development Server
-- Running Background Services
-- Static Files
-- Media Files
-- Stripe Integration
-- WebSocket Support
-- Creator Workflows
-- API Structure
-- Development Commands
-- Deployment Notes
-- Future Roadmap
-- License
+- Payment infrastructure
 
 ---
 
-# Overview
+MyCrony Overview
 
 MyCrony is designed as a creator-first social ecosystem providing:
 
@@ -64,11 +234,11 @@ The project follows a modular Django architecture.
 
 ---
 
-# Features
+MyCrony Features
 
-## User System
+User System
 
-Authentication and account features include:
+Authentication and account functionality includes:
 
 - User registration
 - Login and logout
@@ -86,17 +256,17 @@ Authentication and account features include:
 - Friend system
 - Followers and following
 - Friend requests
-- Close friends support
+- Close friends
 - User discovery
 - Creator onboarding
 
 ---
 
-## Content Platform
+Content Platform
 
-Users can publish and manage:
+Users can publish and manage multiple forms of content.
 
-### Posts
+Posts
 
 - Text posts
 - Image posts
@@ -109,18 +279,14 @@ Users can publish and manage:
 - Content deletion
 - Post analytics
 
-### Stories
-
-Features include:
+Stories
 
 - Story publishing
 - Story viewing
 - Story highlights
-- Temporary content support
+- Temporary content
 
-### Reels
-
-Supports:
+Reels
 
 - Reel creation
 - Reel playback
@@ -128,26 +294,24 @@ Supports:
 - Reel interactions
 - Duet functionality
 
-### Galleries
-
-Gallery system supports:
+Galleries
 
 - Gallery creation
 - Image collections
 - Thumbnail generation
 - Media previews
 
-### Collections
+Collections
 
-Users may organize content into collections.
+Users can organize content into collections.
 
 ---
 
-# Feed System
+Feed System
 
-MyCrony includes a recommendation and ranking engine.
+MyCrony includes recommendation and ranking infrastructure.
 
-Implemented feed types:
+Implemented feed concepts include:
 
 - Following feed
 - Discover feed
@@ -156,7 +320,7 @@ Implemented feed types:
 - Live feed
 - For-you feed
 
-Ranking engines include:
+Ranking strategies include:
 
 - Chronological ranking
 - Engagement ranking
@@ -165,378 +329,227 @@ Ranking engines include:
 - Personalized ranking
 - Hybrid ranking
 
-Feed services include:
+Feed interactions include:
 
-```text
-feeds/services/
-
-Algorithms:
-
-feeds/algorithms/
-
-Feed interactions:
-
-Likes
-
-Saves
-
-Shares
-
-Comments
-
-Reports
-
-Follow actions
-
-Blocks
-
-Mutes
-
-
+- Likes
+- Saves
+- Shares
+- Comments
+- Reports
+- Follow actions
+- Blocks
+- Mutes
 
 ---
 
 Creator Studio
 
-Creator tools are available through the studio module.
+Creator tools are provided through the studio module.
 
-Features:
+Features include:
 
-Creator dashboard
+- Creator dashboard
+- Studio management
+- Draft management
+- Publishing workflows
+- Scheduling
+- Analytics dashboard
+- Audience monitoring
+- Content performance tracking
 
-Studio management
-
-Draft management
-
-Publishing workflows
-
-Scheduling
-
-Analytics dashboard
-
-Audience monitoring
-
-Content performance tracking
-
-
-Studio module:
+Module:
 
 studio/
-
 
 ---
 
 Creator Economy
 
-MyCrony includes creator monetization infrastructure.
-
-Supported systems:
+MyCrony contains creator monetization infrastructure.
 
 Earnings
 
-Earnings dashboard
-
-Revenue tracking
-
-Creator shares
-
-Payment history
-
-Financial summaries
-
+- Earnings dashboard
+- Revenue tracking
+- Creator shares
+- Payment history
+- Financial summaries
 
 Payouts
 
-Supports:
-
-Withdrawal requests
-
-Payout schedules
-
-Payout methods
-
-Creator payments
-
+- Withdrawal requests
+- Payout schedules
+- Payout methods
+- Creator payments
 
 Revenue Systems
 
-Includes:
+- Revenue configuration
+- Creator percentage allocation
+- Promotion shares
+- Transparency reports
 
-Revenue configuration
+Subscriptions
 
-Creator percentage allocation
-
-Promotion shares
-
-Transparency reports
-
-
-Subscription System
-
-Subscription support includes:
-
-Recurring plans
-
-Membership flows
-
-Subscription tracking
-
+- Recurring plans
+- Membership flows
+- Subscription tracking
 
 Financial Infrastructure
 
-Economics module contains:
+The economics module contains financial functionality such as:
 
-Invoice models
+- Invoice models
+- Tax models
+- Revenue models
+- Reports
+- Exchange models
+- Payment models
+- Webhooks
+- Financial analytics
 
-Tax models
-
-Revenue models
-
-Reports
-
-Exchange models
-
-Payment models
-
-Webhooks
-
-Financial analytics
-
-
-Directory:
+Module:
 
 economics/
 
-
 ---
 
-Stripe Payment Infrastructure
+Payment Infrastructure
 
-Stripe powers payment operations inside MyCrony.
+MyCrony includes payment infrastructure supporting monetization workflows.
 
-Implemented payment support:
+Payment capabilities include:
 
-Payment processing
+- Payment processing
+- Subscription billing
+- Webhook integration
+- Revenue tracking
+- Creator payments
+- Transaction workflows
 
-Subscription billing
-
-Webhook integration
-
-Revenue tracking
-
-Creator payments
-
-Transaction workflows
-
-
-Stripe configuration files:
-
-economics/webhooks/stripe_urls.py
-
-Payment flow service:
-
-economics/services/payment_flow.py
-
-Webhook support:
-
-economics/webhooks/
-
-Supported providers:
-
-Stripe
-
-PayPal
-
-Bank integrations
-
-
+The payment architecture includes dedicated payment-flow services and webhook handling.
 
 ---
 
 Real-Time Features
 
-MyCrony supports real-time communication.
+MyCrony uses asynchronous server capabilities and WebSockets for real-time functionality.
 
 Messaging
 
-Features:
+- Conversations
+- Inbox
+- Sent messages
+- Drafts
+- Forwarding
+- Search
+- Threads
 
-Conversations
+Chat
 
-Inbox
-
-Sent messages
-
-Drafts
-
-Forwarding
-
-Search
-
-Threads
-
-
-Chat Features
-
-Message bubbles
-
-Reactions
-
-Typing indicators
-
+- Message bubbles
+- Reactions
+- Typing indicators
 
 Calls
 
-Supported:
-
-Voice calls
-
-Video calls
-
-Call history
-
+- Voice calls
+- Video calls
+- Call history
 
 Live Streaming
 
-Features:
+- Stream creation
+- Live rooms
+- Stream viewing
+- Stream thumbnails
 
-Stream creation
-
-Live rooms
-
-Stream viewing
-
-Stream thumbnails
-
-
-Modules:
+Module:
 
 live/
-
 
 ---
 
 Analytics
 
-Analytics infrastructure includes:
+Analytics infrastructure covers multiple areas.
 
 Creator Analytics
 
-Audience metrics
-
-Revenue analytics
-
-Content performance
-
-Earnings reports
-
+- Audience metrics
+- Revenue analytics
+- Content performance
+- Earnings reports
 
 Content Analytics
 
-Engagement reports
-
-Feed metrics
-
-Post performance
-
+- Engagement reports
+- Feed metrics
+- Post performance
 
 Financial Analytics
 
-Revenue reports
-
-Payment reports
-
-Transparency metrics
-
+- Revenue reports
+- Payment reports
+- Transparency metrics
 
 Administrative Analytics
 
-User activity
-
-System monitoring
-
-Platform statistics
-
-
+- User activity
+- System monitoring
+- Platform statistics
 
 ---
 
 Moderation & Administration
 
-Moderation support includes:
+Moderation infrastructure includes:
 
-Flagged content review
-
-Reporting workflows
-
-Copyright handling
-
-Administrative dashboards
-
-User monitoring
-
-Shadow banning support
-
-Access controls
-
-Permissions
-
+- Flagged-content review
+- Reporting workflows
+- Copyright handling
+- Administrative dashboards
+- User monitoring
+- Access controls
+- Permissions
 
 Administrative templates:
 
 templates/moderation/
 
-
 ---
 
 Media Support
 
-Supported uploads include:
+MyCrony supports multiple media types.
 
-Images:
+Images
 
-JPG
+- JPG
+- PNG
 
-PNG
+Video
 
+- MP4
 
-Video:
+Audio
 
-MP4
-
-
-Audio:
-
-Voice messages
-
-Audio uploads
-
-
-Directories:
-
-media/
+- Voice messages
+- Audio uploads
 
 Media storage includes:
 
-Avatars
-
-Covers
-
-Content media
-
-Galleries
-
-Voice messages
-
-Draft thumbnails
-
-Live thumbnails
-
-
+- Avatars
+- Covers
+- Content media
+- Galleries
+- Voice messages
+- Draft thumbnails
+- Live thumbnails
 
 ---
 
-Applications
+MyCrony Applications
 
 users/          User management
 content/        Posts and publishing
@@ -547,10 +560,9 @@ live/           Live streaming
 core/           Shared utilities
 mycrony/        Project configuration
 
-
 ---
 
-Project Structure
+MyCrony Project Structure
 
 MyCrony/
 
@@ -569,348 +581,181 @@ mycrony/
 manage.py
 requirements.txt
 
-
 ---
 
 Technology Stack
 
-Backend:
+Backend
 
-Python
+- Python
+- Django
+- FastAPI
+- Django REST Framework
+- Django Channels
+- SQLAlchemy
 
-Django
+Databases
 
-Django Channels
+- PostgreSQL
+- SQLite for selected development environments
 
+Infrastructure
 
-Frontend:
+- Redis
+- Celery
+- Docker
+- Nginx
 
-HTML
+APIs
 
-CSS
+- REST APIs
+- WebSockets
+- ASGI
 
-JavaScript
+Payments
 
-Bootstrap
+- Stripe
+- Payment webhook infrastructure
 
+Testing
 
-Database:
+- pytest
+- Django testing
+- Integration testing
+- Automated CI validation
 
-Development:
+DevOps
 
-SQLite
-
-
-Realtime:
-
-WebSockets
-
-ASGI
-
-
-Background Processing:
-
-Celery
-
-
-Payments:
-
-Stripe
-
-PayPal
-
-
-Server:
-
-WSGI
-
-ASGI
-
-
+- Git
+- GitHub
+- GitHub Actions
+- CI/CD
+- Automated quality gates
 
 ---
 
-Installation
+Backend Engineering Themes
 
-Clone repository:
+Across these projects, my work focuses on several recurring engineering problems.
 
-git clone https://github.com/<username>/MyCrony.git
+Reliability
 
-cd MyCrony
+Designing systems that remain correct when operations fail, retry, or execute concurrently.
 
-Create environment:
+Financial Integrity
 
-Linux:
+Protecting balances, transactions, journal entries, and accounting invariants.
 
-python -m venv venv
+Idempotency
 
-source venv/bin/activate
+Preventing duplicate processing when clients or external systems retry requests.
 
-Windows:
+Asynchronous Processing
 
-python -m venv venv
+Moving expensive or failure-prone work into reliable background processing pipelines.
 
-venv\Scripts\activate
+API Architecture
 
-Install dependencies:
+Building structured APIs with clear service boundaries and predictable error handling.
 
-pip install -r requirements.txt
+Database Integrity
 
+Using PostgreSQL transactions, constraints, and carefully designed persistence models to protect application invariants.
 
----
+Testing
 
-Environment Setup
+Using automated unit, integration, and system-level tests to verify critical behavior.
 
-Create:
+CI/CD
 
-.env
+Automating testing and quality checks through GitHub Actions.
 
-Example:
+Observability
 
-DEBUG=True
-
-SECRET_KEY=your_secret_key
-
-STRIPE_SECRET_KEY=
-
-STRIPE_PUBLISHABLE_KEY=
-
-EMAIL_HOST=
-
-EMAIL_PORT=
-
-EMAIL_HOST_USER=
-
-EMAIL_HOST_PASSWORD=
-
+Designing systems so that failures and background processing can be understood and diagnosed.
 
 ---
 
-Database Setup
+Portfolio Architecture
 
-Run migrations:
+The four backend portfolio systems demonstrate different layers of production engineering:
 
-python manage.py makemigrations
-
-python manage.py migrate
-
-Create admin:
-
-python manage.py createsuperuser
-
-
----
-
-Running Development Server
-
-python manage.py runserver
-
-Open:
-
-http://127.0.0.1:8000
-
-
----
-
-Running Background Services
-
-Celery:
-
-celery -A mycrony worker -l info
-
-Scheduler:
-
-celery -A mycrony beat -l info
-
+                    BACKEND ENGINEERING PORTFOLIO
+                              │
+          ┌───────────────────┼───────────────────┐
+          │                   │                   │
+     PAYMENT SYSTEMS     FINANCIAL SYSTEMS    ASYNC SYSTEMS
+          │                   │                   │
+          ▼                   ▼                   ▼
+   Payment Flow         Transfer Engine      AsyncAPI Engine
+          │                   │                   │
+          │                   ▼                   │
+          │              LedgerCore              │
+          │                   │                   │
+          └───────────────────┼───────────────────┘
+                              │
+                              ▼
+                  Production Backend Principles
+                              │
+        ┌─────────────────────┼─────────────────────┐
+        │                     │                     │
+    Reliability          Data Integrity        Scalability
+        │                     │                     │
+    Idempotency          Transactions          Async Work
+        │                     │                     │
+     Testing               Auditability        Observability
+        │                     │                     │
+        └─────────────────────┼─────────────────────┘
+                              │
+                              ▼
+                            CI/CD
 
 ---
 
-Static Files
+Development Philosophy
 
-Collect static assets:
+I build backend systems around the principle that production software is more than making an endpoint return a successful response.
 
-python manage.py collectstatic
+The important questions are:
 
-Static directories:
+- What happens when a request is retried?
+- What happens when two operations happen concurrently?
+- What happens when an external provider fails?
+- How is financial state protected?
+- How are transactions made atomic?
+- How are background jobs retried safely?
+- How are failures observed?
+- How are changes tested automatically?
+- How does the system behave under real operational conditions?
 
-static/
-staticfiles/
-
-
----
-
-Media Files
-
-Media directory:
-
-media/
-
-Contains:
-
-avatars
-
-covers
-
-posts
-
-galleries
-
-voice messages
-
-live thumbnails
-
-
+These principles guide the architecture of my portfolio projects.
 
 ---
 
-WebSocket Support
-
-Realtime routing:
-
-users/routing.py
-
-feeds/routing.py
-
-ASGI entry:
-
-mycrony/asgi.py
-
-
----
-
-Creator Workflow
-
-Creator flow:
-
-User Registration
-
-↓
-
-Profile Setup
-
-↓
-
-Creator Onboarding
-
-↓
-
-Content Publishing
-
-↓
-
-Audience Growth
-
-↓
-
-Analytics Tracking
-
-↓
-
-Revenue Generation
-
-↓
-
-Payout Processing
-
-
----
-
-API Structure
-
-API modules:
-
-content/api_views/
-
-feeds/views/api_views.py
-
-feeds/services/views/api_views.py
-
-Serialization support:
-
-serializers.py
-
-
----
-
-Development Commands
-
-Run server:
-
-python manage.py runserver
-
-Migrations:
-
-python manage.py makemigrations
-
-python manage.py migrate
-
-Create admin:
-
-python manage.py createsuperuser
-
-Collect static:
-
-python manage.py collectstatic
-
-Tests:
-
-python manage.py test
-
-
----
-
-Deployment Notes
-
-Recommended production stack:
-
-Nginx
-
-Gunicorn
-
-Daphne
-
-Redis
-
-PostgreSQL
-
-Celery workers
-
-Stripe webhooks
-
-
-Development currently uses SQLite.
-
-Production migration to PostgreSQL is recommended.
-
-
----
-
-Future Roadmap
-
-Planned improvements:
-
-AI recommendations
-
-Marketplace support
-
-Advanced creator tools
-
-Enhanced moderation
-
-Distributed feeds
-
-Recommendation optimization
-
-Creator marketplace
-
-Extended analytics
-
-
+Current Focus
+
+My current focus is expanding these systems toward increasingly production-oriented architecture across:
+
+- Financial infrastructure
+- Payment systems
+- Accounting systems
+- API engineering
+- Async Python
+- PostgreSQL
+- Redis
+- Distributed processing
+- Automated testing
+- CI/CD
+- Security
+- Observability
+- Reliable backend architecture
+
+My goal is to demonstrate the ability to design and build real backend systems with strong correctness, reliability, maintainability, and operational characteristics rather than simply producing functional prototypes.
 
 ---
 
 License
 
-MIT License
+Individual portfolio projects may use their respective repository licenses.
 
 MyCrony © 2026
