@@ -1,6 +1,6 @@
 OVIE — BACKEND ENGINEER PORTFOLIO
 
-I'm OVIE — a backend-focused developer building scalable, reliable systems with Python, Django, FastAPI, PostgreSQL, Redis, REST APIs, asynchronous processing, financial infrastructure, and automated testing.
+I'm OVIE — a backend-focused developer building scalable, reliable systems with Python, Django, FastAPI, PostgreSQL, Redis, REST APIs, Celery, asynchronous processing, financial infrastructure, and automated testing.
 
 My portfolio focuses on production-oriented backend engineering rather than simple CRUD applications. I build systems around payments, money movement, accounting, asynchronous processing, API reliability, database integrity, idempotency, concurrency, observability, and CI/CD.
 
