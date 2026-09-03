@@ -50,7 +50,8 @@ Engineering Focus
 - Integration testing
 - CI/CD
 - Production-oriented configuration
-
+- 
+https://github.com/goovat/payment-flow.git
 ---
 
 2. Transfer Engine
@@ -85,6 +86,7 @@ Engineering Focus
 
 The project is designed to demonstrate that a financial backend must protect the correctness of balances rather than simply expose transfer endpoints.
 
+https://github.com/goovat/transfer-engine.git
 ---
 
 3. LedgerCore
@@ -133,6 +135,7 @@ Engineering Focus
 - CI/CD
 - Production reliability
 
+https://github.com/goovat/Ledger_Core.git
 ---
 
 4. AsyncAPI Engine
@@ -191,6 +194,7 @@ Engineering Focus
 - Containerization
 - Automated testing
 
+https://github.com/goovat/Async_API_Engine.git
 ---
 
 MyCrony
