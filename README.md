@@ -1,8 +1,8 @@
 OVIE — BACKEND ENGINEER PORTFOLIO
 
-I'm OVIE — a backend-focused developer building scalable, reliable systems with Python, Django, FastAPI, PostgreSQL, Redis, REST APIs, Celery, asynchronous processing, financial infrastructure, and automated testing.
+I'm OVIE — a backend-focused developer building scalable, reliable systems with Python, Django, FastAPI, PostgreSQL, Redis, Celery, REST APIs, asynchronous processing, financial infrastructure, real-time systems, and automated testing.
 
-My portfolio focuses on production-oriented backend engineering rather than simple CRUD applications. I build systems around payments, money movement, accounting, asynchronous processing, API reliability, database integrity, idempotency, concurrency, observability, and CI/CD.
+My portfolio focuses on production-oriented backend engineering rather than simple CRUD applications. I build systems around payments, money movement, accounting, asynchronous processing, API reliability, database integrity, idempotency, concurrency, observability, real-time communication, and CI/CD.
 
 My current engineering portfolio includes four core backend systems:
 
@@ -11,7 +11,7 @@ My current engineering portfolio includes four core backend systems:
 - LedgerCore — double-entry financial ledger and accounting engine
 - AsyncAPI Engine — asynchronous API and background job-processing platform
 
-I am also building MyCrony, a full-stack social networking and creator-economy platform combining social media, creator tools, content management, real-time communication, monetization, analytics, and payment infrastructure.
+I am also building MyCrony, a full-stack social networking and creator-economy platform combining social media, creator tools, content management, live video streaming, local voice and video calls, real-time communication, monetization, analytics, and payment infrastructure.
 
 ---
 
@@ -44,6 +44,8 @@ Engineering Focus
 - Idempotency
 - Webhook reliability
 - Asynchronous processing
+- Celery workers
+- Redis-backed background processing
 - Transaction state management
 - Integration testing
 - CI/CD
@@ -193,9 +195,9 @@ Engineering Focus
 
 MyCrony
 
-MyCrony is a full-stack social networking, creator-economy, media-sharing, and monetization platform built with Django.
+MyCrony is a full-stack social networking, creator-economy, media-sharing, real-time communication, live-streaming, and monetization platform built with Django.
 
-The project combines social media functionality, creator tools, content management, live interactions, personalized feeds, analytics, real-time communication, and payment infrastructure into one ecosystem.
+The project combines social media functionality, creator tools, content management, personalized feeds, analytics, live video streaming, local voice and video calls, real-time messaging, monetization, and payment infrastructure into one ecosystem.
 
 The platform supports:
 
@@ -207,6 +209,9 @@ The platform supports:
 - Creator earnings
 - Subscriptions
 - Real-time engagement
+- Live video streaming
+- Local voice calls
+- Local video calls
 - Analytics
 - Payment infrastructure
 
@@ -220,8 +225,11 @@ MyCrony is designed as a creator-first social ecosystem providing:
 - Social connections
 - Posts and media publishing
 - Reels and stories
-- Live streaming
-- Messaging
+- Live video streaming
+- Live rooms
+- Local voice calls
+- Local video calls
+- Real-time messaging
 - Recommendation systems
 - Creator monetization
 - Earnings dashboards
@@ -416,7 +424,7 @@ economics/
 
 Payment Infrastructure
 
-MyCrony includes payment infrastructure supporting monetization workflows.
+MyCrony includes payment infrastructure supporting creator monetization and platform payment workflows.
 
 Payment capabilities include:
 
@@ -426,6 +434,8 @@ Payment capabilities include:
 - Revenue tracking
 - Creator payments
 - Transaction workflows
+- Payment state management
+- Asynchronous payment workflows
 
 The payment architecture includes dedicated payment-flow services and webhook handling.
 
@@ -433,7 +443,9 @@ The payment architecture includes dedicated payment-flow services and webhook ha
 
 Real-Time Features
 
-MyCrony uses asynchronous server capabilities and WebSockets for real-time functionality.
+MyCrony uses Django Channels, WebSockets, Redis, and asynchronous processing for real-time functionality.
+
+The real-time layer covers messaging, local calls, and live video experiences.
 
 Messaging
 
@@ -444,29 +456,142 @@ Messaging
 - Forwarding
 - Search
 - Threads
+- Real-time message delivery
 
 Chat
 
 - Message bubbles
 - Reactions
 - Typing indicators
+- Real-time interactions
 
-Calls
+---
 
-- Voice calls
-- Video calls
+Local Voice & Video Calls
+
+MyCrony supports direct local communication between users on the platform.
+
+Users can communicate through in-platform voice and video calls.
+
+Call Features
+
+- One-to-one voice calls
+- One-to-one video calls
+- Incoming calls
+- Outgoing calls
+- Call acceptance
+- Call rejection
+- Call termination
 - Call history
+- Real-time call signaling
+- In-platform user-to-user communication
 
-Live Streaming
+The goal is to provide direct communication within the MyCrony ecosystem without requiring users to leave the platform for ordinary voice or video conversations.
 
-- Stream creation
+---
+
+Live Video Streaming
+
+MyCrony supports live video broadcasting, allowing creators to stream live video to audiences within the platform.
+
+Live Streaming Features
+
+- Live stream creation
+- Live video broadcasting
 - Live rooms
 - Stream viewing
+- Live audience participation
+- Real-time interactions
 - Stream thumbnails
+- Stream metadata
+- Live-session management
+- Creator live sessions
+- Live feed integration
+
+The live-streaming functionality is separated from ordinary content publishing so live sessions can be treated as real-time platform events.
 
 Module:
 
 live/
+
+---
+
+MyCrony Real-Time Architecture
+
+Conceptually, the real-time layer is structured around:
+
+                         MyCrony
+                            │
+             ┌──────────────┼──────────────┐
+             │              │              │
+             ▼              ▼              ▼
+        Messaging        Calls       Live Streaming
+             │              │              │
+             └──────────────┼──────────────┘
+                            │
+                            ▼
+                    Django Channels
+                            │
+                            ▼
+                       WebSockets
+                            │
+                            ▼
+                          Redis
+                            │
+                            ▼
+                  Asynchronous Processing
+                            │
+                            ▼
+                         Celery
+
+This allows MyCrony to combine conventional Django application functionality with real-time communication and asynchronous background processing.
+
+---
+
+MyCrony Background Processing
+
+MyCrony uses Celery and Redis for asynchronous and background workloads.
+
+Background processing can support areas such as:
+
+- Scheduled content publishing
+- Media processing
+- Thumbnail generation
+- Notification processing
+- Analytics processing
+- Email workflows
+- Payment-related asynchronous tasks
+- Creator-economy workflows
+- Periodic maintenance tasks
+
+Celery workers execute background jobs while Redis provides the supporting message-broker infrastructure.
+
+Celery Beat can be used for scheduled and periodic workloads.
+
+Conceptually:
+
+                    MyCrony
+                       │
+          ┌────────────┼────────────┐
+          │            │            │
+          ▼            ▼            ▼
+       Django       Channels      APIs
+          │            │            │
+          └────────────┼────────────┘
+                       │
+                       ▼
+                     Redis
+                       │
+                       ▼
+                    Celery
+                       │
+              ┌────────┴────────┐
+              │                 │
+              ▼                 ▼
+          Workers          Celery Beat
+              │                 │
+              ▼                 ▼
+       Background Jobs    Scheduled Tasks
 
 ---
 
@@ -531,11 +656,15 @@ Images
 Video
 
 - MP4
+- Video posts
+- Reels
+- Live video
 
 Audio
 
 - Voice messages
 - Audio uploads
+- Voice-call support
 
 Media storage includes:
 
@@ -589,33 +718,38 @@ Backend
 
 - Python
 - Django
-- FastAPI
 - Django REST Framework
 - Django Channels
+- FastAPI
 - SQLAlchemy
+- Celery
 
 Databases
 
 - PostgreSQL
 - SQLite for selected development environments
 
-Infrastructure
+Infrastructure & Background Processing
 
 - Redis
 - Celery
+- Celery Beat
+- Asynchronous workers
+- Background job processing
 - Docker
-- Nginx
 
-APIs
+APIs & Real-Time Communication
 
 - REST APIs
 - WebSockets
 - ASGI
+- Django Channels
 
 Payments
 
 - Stripe
 - Payment webhook infrastructure
+- Payment processing workflows
 
 Testing
 
@@ -631,6 +765,17 @@ DevOps
 - GitHub Actions
 - CI/CD
 - Automated quality gates
+
+Production Infrastructure
+
+- Nginx
+- Gunicorn
+- Daphne
+- PostgreSQL
+- Redis
+- Celery workers
+- Celery Beat
+- ASGI/WebSocket infrastructure
 
 ---
 
@@ -652,7 +797,11 @@ Preventing duplicate processing when clients or external systems retry requests.
 
 Asynchronous Processing
 
-Moving expensive or failure-prone work into reliable background processing pipelines.
+Using Celery, Redis, background workers, and asynchronous Python to move expensive or failure-prone workloads away from synchronous request paths.
+
+Real-Time Systems
+
+Building real-time communication infrastructure for messaging, voice/video calls, and live video experiences using WebSockets and asynchronous server architecture.
 
 API Architecture
 
@@ -672,7 +821,7 @@ Automating testing and quality checks through GitHub Actions.
 
 Observability
 
-Designing systems so that failures and background processing can be understood and diagnosed.
+Designing systems so that failures, background processing, and system behavior can be understood and diagnosed.
 
 ---
 
@@ -682,17 +831,17 @@ The four backend portfolio systems demonstrate different layers of production en
 
                     BACKEND ENGINEERING PORTFOLIO
                               │
-          ┌───────────────────┼───────────────────┐
-          │                   │                   │
+          ┌───────────────────┼────────────────────┐
+          │                   │                    │
      PAYMENT SYSTEMS     FINANCIAL SYSTEMS    ASYNC SYSTEMS
-          │                   │                   │
-          ▼                   ▼                   ▼
+          │                   │                    │
+          ▼                   ▼                    ▼
    Payment Flow         Transfer Engine      AsyncAPI Engine
-          │                   │                   │
-          │                   ▼                   │
-          │              LedgerCore              │
-          │                   │                   │
-          └───────────────────┼───────────────────┘
+          │                   │                    │
+          │                   ▼                    │
+          │              LedgerCore               │
+          │                   │                    │
+          └───────────────────┼────────────────────┘
                               │
                               ▼
                   Production Backend Principles
@@ -710,6 +859,30 @@ The four backend portfolio systems demonstrate different layers of production en
                               ▼
                             CI/CD
 
+MyCrony extends this portfolio into a large-scale application domain combining:
+
+                         MyCrony
+                            │
+       ┌────────────────────┼────────────────────┐
+       │                    │                    │
+       ▼                    ▼                    ▼
+   Social Platform     Creator Economy      Real-Time Systems
+       │                    │                    │
+       ▼                    ▼                    ▼
+   Content/Feeds       Payments/Payouts    Messaging/Calls
+                                                │
+                                                ▼
+                                         Live Video Streaming
+                            │
+                            ▼
+                    Background Processing
+                            │
+                            ▼
+                         Celery
+                            │
+                            ▼
+                          Redis
+
 ---
 
 Development Philosophy
@@ -724,6 +897,8 @@ The important questions are:
 - How is financial state protected?
 - How are transactions made atomic?
 - How are background jobs retried safely?
+- How are scheduled jobs handled?
+- How are real-time connections managed?
 - How are failures observed?
 - How are changes tested automatically?
 - How does the system behave under real operational conditions?
@@ -741,16 +916,19 @@ My current focus is expanding these systems toward increasingly production-orien
 - Accounting systems
 - API engineering
 - Async Python
+- Celery
 - PostgreSQL
 - Redis
 - Distributed processing
+- Real-time systems
+- WebSockets
 - Automated testing
 - CI/CD
 - Security
 - Observability
 - Reliable backend architecture
 
-My goal is to demonstrate the ability to design and build real backend systems with strong correctness, reliability, maintainability, and operational characteristics rather than simply producing functional prototypes.
+My goal is to demonstrate the ability to design and build real backend systems with strong correctness, reliability, maintainability, scalability, and operational characteristics rather than simply producing functional prototypes.
 
 ---
 
