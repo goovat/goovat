@@ -201,6 +201,8 @@ MyCrony
 
 MyCrony is a full-stack social networking, creator-economy, media-sharing, real-time communication, live-streaming, and monetization platform built with Django.
 
+https://github.com/goovat/MyCrony.git
+
 The project combines social media functionality, creator tools, content management, personalized feeds, analytics, live video streaming, local voice and video calls, real-time messaging, monetization, and payment infrastructure into one ecosystem.
 
 The platform supports:
